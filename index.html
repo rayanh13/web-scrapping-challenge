@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <style>
+    .shape{
+        padding-top: 15px;
+        padding-bottom: 23px;
+        margin-bottom: 30px;
+        color: inherit;
+        background-color: #eee;
+
+    }
+
+    #text_align{
+        text-align: center;
+    }
+    
+    .mars_box {
+      border-style: solid;
+      border-width: 1px;
+      border-color: grey;
+    }
+
+    </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+
+    <!-- Craigslist Listings -->
+    <div class="row" id="mars-listings">
+      <div class="col-md-12">
+          <h2 style="text-align: justify">Latest Mars News</h2>
+        </div>
+      <div class="col-md-12">
+          <p style="text-align: justify;
+          font-size: medium"><b>{{listings.headline}}</b></p>
+          </div>
+      <div class="col-md-12">
+          <p style="text-align: justify"> {{listings.summary}}
+            </p>
+            </div>  
+      </div>
+      <div class="row">
+          <div class="col-md-8">
+              <h2 style="text-align: justify">Featured Mars Image</h2>
+              <img src= {{listings.featured_image_url}} alt="..." style="width: 75%">
+              </div>
+          <div class="col-md-4">
+              <div class="mars_box">
+              <br/>
+              <h4 style="text-align: justify"><b>Current Weather on Mars</b></h4>
+              <p style="text-align: justify;
+              font-size: medium">{{listings.final_mars_weather}}</p>
+              </div>
+              <br/>
+              <br/>
+              <br/>
+              <h4 style="text-align: justify"><b>Mars Facts</b></h4>
+                {{listings.final_table | safe}}
+          </div>
+
+
+             
+  </div>
+
+   <!-- Row 1 -->
+   <div class="row">
+      <div class="col-md-12">
+        <h2 id="text_align">Mars Hemispheres</h2>
+      </div>
+    </div>
+
+      <!-- Row 1 -->
+      <div class="row">
+          <div class="col-md-6">
+            <div class="thumbnail">
+              <img src= "{{listings.hemisphere_image_urls[0]['img_url']}}" alt="..." style="width:100%">
+              <div class="caption">
+                <h4><b>{{listings.hemisphere_image_urls[0]['title']}}</b></h4>
+              </div>
+            </div>
+          </div>
+      
+      
+          <div class="col-md-6">
+              <div class="thumbnail">
+                <img src="{{listings.hemisphere_image_urls[1]['img_url']}}" alt="..." style="width:100%">
+                <div class="caption">
+                  <h4><b>{{listings.hemisphere_image_urls[1]['title']}}</b></h4>
+                </div>
+              </div>
+            </div>
+          
+      </div>
+
+      <!-- Row 1 -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="thumbnail">
+            <img src= "{{listings.hemisphere_image_urls[2]['img_url']}}" alt="..." style="width:100%">
+            <div class="caption">
+              <h4><b>{{listings.hemisphere_image_urls[2]['title']}}</b></h4>
+            </div>
+          </div>
+        </div>
+    
+    
+        <div class="col-md-6">
+            <div class="thumbnail">
+              <img src="{{listings.hemisphere_image_urls[3]['img_url']}}" alt="..." style="width:100%">
+              <div class="caption">
+                <h4><b>{{listings.hemisphere_image_urls[3]['title']}}</b></h4>
+              </div>
+            </div>
+          </div>
+        
+    </div>
+
+</body>
+
+</html>
+
